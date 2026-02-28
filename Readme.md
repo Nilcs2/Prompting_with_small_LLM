@@ -23,6 +23,16 @@ The model was tested on multiple NLP tasks to evaluate the effectiveness of inst
 * **Hardware Execution:** Successfully routed model tensors to the local GPU via PyTorch (`.to("cuda")`), significantly speeding up inference compared to CPU execution.
 * **Model Limitations:** As expected with an 80M parameter model, `flan-t5-small` struggles with complex generative tasks and non-Latin translations (e.g., Hindi). However, it serves as an excellent, lightweight sandbox for testing pipeline architecture and prompt structures before scaling up to larger models like Llama 3 or Mistral.
 
+## Inference Results & Evaluation
+Below are the results from the `flan-t5-small` local inference tests. As an 80M parameter model, it performs well on basic classification (sentiment) but struggles with complex generation or low-resource translation.
+
+| NLP Task | Prompt | Model Output | Engineering Note |
+| :--- | :--- | :--- | :--- |
+| **Translation (German)** | "Translate to German: I am successfully running AI on my GPU!" | *Ich habe erfolgreiches AI auf meinem GPU!* | Successfully translated technical context. |
+| **Translation (Hindi)** | "Translate to Hindi: I am running large language model..." | *(Empty Output)* | Highlights the vocabulary limitations of the "small" model tier. |
+| **Sentiment Analysis** | "Give me the sentiment for [Dialogue]..." | *negative* | Correctly classified the rushed, anxious tone of the dialogue. |
+| **Zero-Shot Summary** | "Summarize the conversation: [Dialogue]" | *It's ten to nine by my watch.* | Extracted a sentence rather than summarizing. Needs Few-Shot prompting or a larger parameter model. |
+
 ## How to Run Locally
 1. Clone the repository.
 2. Install dependencies: `pip install -r requirements.txt`
