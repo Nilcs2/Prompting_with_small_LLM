@@ -1,6 +1,6 @@
-# 🤖 Local LLM Prompt Engineering & NLP Pipeline
+# Local LLM Prompt Engineering & NLP Pipeline
 
-## 📌 Project Overview
+## Project Overview
 This project explores the mechanics of Large Language Models (LLMs) by deploying Google's `flan-t5-small` locally using PyTorch and Hugging Face Transformers. The objective was to build an NLP pipeline to test model capabilities across various tasks and experiment with different prompt engineering techniques.
 
 By executing the model locally on dedicated GPU hardware (CUDA), this project also highlights the intersection of model deployment and hardware utilization.
